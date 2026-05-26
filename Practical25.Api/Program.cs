@@ -1,12 +1,21 @@
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ApplicationDbContext>(ConfigureDbContext);
 
+// Injecting Handlers, Validators, and Pipeline Behaviours for MediatR
+builder.Services.AddMediatR(config =>
+    config.RegisterServicesFromAssembly(typeof(CreateEmployeeHandler).Assembly));
+
+builder.Services.AddValidatorsFromAssemblyContaining<CreateEmployeeHandler>();
+
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IDatabaseSeeder, DatabaseSeeder>();
 
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<EmployeeProfile>());
@@ -28,6 +37,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 

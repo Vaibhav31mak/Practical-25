@@ -1,8 +1,12 @@
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.EntityFrameworkCore;
-global using Practical25.Application.DTOs;
+global using FluentValidation;
+global using Practical25.Application.Behaviours;
+global using Practical25.Application.Features.Employees.Handlers;
 global using Practical25.Application.Mappings;
-global using Practical25.Application.Services;
 global using Practical25.Infrastructure.Context;
+global using Practical25.Infrastructure.Repositories;
 global using Practical25.Infrastructure.Seeders;
 global using Practical25.Infrastructure.UnitOfWork;
+global using MediatR;
+global using Practical25.Api.Middleware;

@@ -31,8 +31,4 @@
     <ProjectReference Include="..\Practical25.Infrastructure\Practical25.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
