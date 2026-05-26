@@ -6,6 +6,9 @@ public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> 
 
     // Fluent API configurations especially for Salary property to
     // ensure it has the correct precision and scale in the database
+    /// <summary>
+    /// Configures model mappings for the database context.
+    /// </summary>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);

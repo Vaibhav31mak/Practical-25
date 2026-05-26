@@ -1,11 +1,11 @@
 
-using Microsoft.Extensions.Options;
-using System.ComponentModel;
-
 namespace Practical25.Application.Mappings
 {
     public sealed class EmployeeProfile : Profile
     {
+        /// <summary>
+        /// Configures mappings for employee features.
+        /// </summary>
         public EmployeeProfile()
         {
             CreateMap<Employee, EmployeeResponse>();

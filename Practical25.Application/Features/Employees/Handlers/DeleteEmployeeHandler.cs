@@ -4,6 +4,9 @@ public class DeleteEmployeeHandler(IUnitOfWork unitOfWork)
     : IRequestHandler<DeleteEmployeeCommand, bool>
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
+    /// <summary>
+    /// Handles the request to delete an employee.
+    /// </summary>
     public async Task<bool> Handle(DeleteEmployeeCommand request
         , CancellationToken cancellationToken)
     {

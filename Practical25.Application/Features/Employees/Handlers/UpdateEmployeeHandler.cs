@@ -5,6 +5,9 @@ public class UpdateEmployeeHandler(IUnitOfWork unitOfWork, IMapper mapper)
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly IMapper _mapper = mapper;
+    /// <summary>
+    /// Handles the request to update an employee.
+    /// </summary>
     public async Task<int> Handle(UpdateEmployeeCommand request
         , CancellationToken cancellationToken)
     {

@@ -6,6 +6,9 @@ public class GetAllEmployeesHandler(IUnitOfWork unitOfWork, IMapper mapper)
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly IMapper _mapper = mapper;
 
+    /// <summary>
+    /// Handles the request to retrieve all employees.
+    /// </summary>
     public async Task<IReadOnlyList<EmployeeResponse>> Handle(GetAllEmployeesQuery request
         , CancellationToken cancellationToken)
     {

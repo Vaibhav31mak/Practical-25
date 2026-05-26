@@ -1,6 +1,10 @@
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.EntityFrameworkCore;
+global using System.Net;
 global using FluentValidation;
+global using Practical25.Application.Exceptions;
+global using Practical25.Application.Features.Employees.Commands;
+global using Practical25.Application.Features.Employees.Queries;
 global using Practical25.Application.Behaviours;
 global using Practical25.Application.Features.Employees.Handlers;
 global using Practical25.Application.Mappings;

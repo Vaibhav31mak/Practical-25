@@ -20,6 +20,9 @@ builder.Services.AddScoped<IDatabaseSeeder, DatabaseSeeder>();
 
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<EmployeeProfile>());
 
+/// <summary>
+/// Configures the database context options.
+/// </summary>
 void ConfigureDbContext(DbContextOptionsBuilder options)
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -48,6 +51,9 @@ app.MapControllers();
 
 app.Run();
 
+/// <summary>
+/// Seeds the database with initial data.
+/// </summary>
 static async Task SeedDatabaseAsync(WebApplication app)
 {
     using var scope = app.Services.CreateScope();

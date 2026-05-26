@@ -5,6 +5,9 @@ public class CreateEmployeeHandler(IUnitOfWork unitOfWork, IMapper mapper)
 {
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly IMapper _mapper = mapper;
+    /// <summary>
+    /// Handles the employee creation request.
+    /// </summary>
     public async Task<int> Handle(CreateEmployeeCommand request
         , CancellationToken cancellationToken)
     {

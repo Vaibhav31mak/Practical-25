@@ -3,6 +3,9 @@
 public class UpdateEmployeeValidator
     : AbstractValidator<UpdateEmployeeCommand>
 {
+    /// <summary>
+    /// Initializes validation rules for updating an employee.
+    /// </summary>
     public UpdateEmployeeValidator()
     {
         RuleFor(x => x.Name)

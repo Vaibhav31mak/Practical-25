@@ -1,10 +1,18 @@
 using System.Net;
 using Practical25.Application.Exceptions;
+using System.Threading.Tasks;
+using FluentValidation;
+using Practical25.Application.Exceptions;
 
 namespace Practical25.Api.Middleware;
 
 public sealed class ExceptionHandlingMiddleware(RequestDelegate next)
-{
+{    /// Handles exceptions and converts them into standardized HTTP responses.
+
+    /// <summary>
+    /// Invokes the middleware to handle exceptions.
+    /// </summary>
+    /// <param name="context">The current HTTP context.</param>
     public async Task InvokeAsync(HttpContext context)
     {
         try

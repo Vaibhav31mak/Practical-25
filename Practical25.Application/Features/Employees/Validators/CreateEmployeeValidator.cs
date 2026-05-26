@@ -3,6 +3,9 @@
 public class CreateEmployeeValidator
     : AbstractValidator<CreateEmployeeCommand>
 {
+    /// <summary>
+    /// Initializes validation rules for creating an employee.
+    /// </summary>
     public CreateEmployeeValidator()
     {
         RuleFor(x => x.Name)
