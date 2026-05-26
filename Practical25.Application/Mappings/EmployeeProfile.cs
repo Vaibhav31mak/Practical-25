@@ -1,4 +1,7 @@
 
+using Microsoft.Extensions.Options;
+using System.ComponentModel;
+
 namespace Practical25.Application.Mappings
 {
     public sealed class EmployeeProfile : Profile
@@ -6,8 +9,14 @@ namespace Practical25.Application.Mappings
         public EmployeeProfile()
         {
             CreateMap<Employee, EmployeeResponse>();
-            CreateMap<CreateEmployeeRequest, Employee>();
-            CreateMap<UpdateEmployeeRequest, Employee>();
+
+            CreateMap<CreateEmployeeCommand, Employee>()
+                .ForMember(destination => destination.JoiningDate, 
+                options => options.MapFrom(_ => DateTime.UtcNow))
+                .ForMember(destination => destination.Status,
+                options => options.MapFrom(_ => true));
+
+            CreateMap<UpdateEmployeeCommand, Employee>();
         }
     }
 }

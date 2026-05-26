@@ -1,9 +1,7 @@
-using Microsoft.EntityFrameworkCore;
-
 namespace Practical25.Infrastructure.Repositories
 {
     // Sealed Generic Repository class Implementation
-    public sealed class Repository<T>(DbContext context) : IRepository<T> where T : class
+    public sealed class Repository<T>(ApplicationDbContext context) : IRepository<T> where T : class
     {
         private readonly DbSet<T> _dbSet = context.Set<T>();
 

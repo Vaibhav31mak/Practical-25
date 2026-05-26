@@ -5,4 +5,4 @@ public record CreateEmployeeCommand(
     decimal Salary,
     int DepartmentId,
     string EmailId
-) : IRequest<EmployeeResponse>;
+) : IRequest<int>;

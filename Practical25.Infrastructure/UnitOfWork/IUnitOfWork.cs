@@ -1,4 +1,3 @@
-using Practical23.Domain.Entities;
 using Practical25.Infrastructure.Repositories;
 
 namespace Practical25.Infrastructure.UnitOfWork
