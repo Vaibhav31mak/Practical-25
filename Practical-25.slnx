@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+  </Folder>
+  <Project Path="Practical25.Api/Practical25.Api.csproj" />
+  <Project Path="Practical25.Application/Practical25.Application.csproj" Id="02d3de1f-5b8c-4cb7-818f-1b69efe5c0d8" />
+  <Project Path="Practical25.Domain/Practical25.Domain.csproj" Id="a27d99d6-48b9-400d-bf3f-30356d0aa508" />
+  <Project Path="Practical25.Infrastructure/Practical25.Infrastructure.csproj" Id="a88c2b84-34cf-43d6-9350-a16e3f722dde" />
+</Solution>
