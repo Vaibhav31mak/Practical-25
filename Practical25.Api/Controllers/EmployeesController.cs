@@ -23,12 +23,12 @@ public class EmployeesController(IMediator mediator) : ControllerBase
     /// </summary>
     /// <param name="cancellationToken">A token to cancel the operation.</param>
     /// <returns>Returns all employee records.</returns>
-    [HttpGet]
-    public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
-    {
-        var result = await mediator.Send(new GetAllEmployeesQuery(), cancellationToken);
-        return Ok(result);
-    }
+    //[HttpGet]
+    //public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
+    //{
+    //    var result = await mediator.Send(new GetAllEmployeesQuery(), cancellationToken);
+    //    return Ok(result);
+    //}
 
     /// <summary>
     /// Retrieves the employee with the specified identifier.
@@ -36,15 +36,20 @@ public class EmployeesController(IMediator mediator) : ControllerBase
     /// <param name="id">The Id of the employee to retrieve.</param>
     /// <param name="cancellationToken">A token to cancel the operation.</param>
     /// <returns>Returns the employee if found, otherwise returns NotFound.</returns>
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(int id, CancellationToken cancellationToken)
+    [HttpGet]
+    public async Task<IActionResult> Get([FromQuery] int? id, CancellationToken cancellationToken)
     {
-        var result = await mediator.Send(new GetEmployeeByIdQuery(id), cancellationToken);
-        if (result == null)
+        if(id == null)
+        {
+            var result = await mediator.Send(new GetAllEmployeesQuery(), cancellationToken);
+            return Ok(result);
+        }
+        var GetByIdResult = await mediator.Send(new GetEmployeeByIdQuery(id.Value), cancellationToken);
+        if (GetByIdResult == null)
         {
             return NotFound();
         }
-        return Ok(result);
+        return Ok(GetByIdResult);
     }
 
     /// <summary>
