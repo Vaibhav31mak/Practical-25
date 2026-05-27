@@ -14,7 +14,7 @@ public class UpdateEmployeeHandler(IUnitOfWork unitOfWork, IMapper mapper)
         var employee = await _unitOfWork.Employees.GetByIdAsync(request.Id, cancellationToken);
         if (employee == null)
         {
-            return 0; 
+            return 0;
         }
         _mapper.Map(request, employee);
 

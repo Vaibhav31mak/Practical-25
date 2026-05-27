@@ -8,14 +8,28 @@ namespace Practical25.Infrastructure.Repositories
         /// <summary>
         /// Gets an entity by identifier.
         /// </summary>
-        public async Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
-            => await _dbSet.FindAsync(id, cancellationToken);
+        public async Task<T?> GetByIdAsync
+            (int id, CancellationToken cancellationToken = default)
+        {
+            var entity = await _dbSet.FindAsync(id, cancellationToken);
+            if(entity is IStatusCheck statusCheckEntity && !statusCheckEntity.Status)
+            {
+                return null;
+            }
+            return entity;
+        }
 
         /// <summary>
         /// Gets all entities.
         /// </summary>
-        public async Task<IReadOnlyList<T>> GetAllAsync(CancellationToken cancellationToken = default)
-            => await _dbSet.AsNoTracking().ToListAsync(cancellationToken);
+        public async Task<IReadOnlyList<T>> GetAllAsync
+            (CancellationToken cancellationToken = default)
+        {
+            var entities = await _dbSet.AsNoTracking().ToListAsync(cancellationToken);
+            entities.RemoveAll(e => e is IStatusCheck statusCheckEntity
+                                    && !statusCheckEntity.Status);
+            return entities;
+        }
 
         /// <summary>
         /// Adds a new entity.
@@ -30,9 +44,19 @@ namespace Practical25.Infrastructure.Repositories
             => _dbSet.Update(entity);
 
         /// <summary>
-        /// Removes an existing entity.
+        /// Soft Deletes an existing entity.
         /// </summary>
         public void Remove(T entity)
-            => _dbSet.Remove(entity);
+        {
+            if (entity is IStatusCheck statusCheckEntity)
+            {
+                statusCheckEntity.Status = false;
+                _dbSet.Update(entity);
+            }
+            else
+            {
+                _dbSet.Remove(entity);
+            }
+        }
     }
 }

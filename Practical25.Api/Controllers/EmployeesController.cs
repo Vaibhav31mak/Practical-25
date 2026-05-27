@@ -56,7 +56,8 @@ public class EmployeesController(IMediator mediator) : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id, CancellationToken cancellationToken)
     {
-        var result = await mediator.Send(new DeleteEmployeeCommand(id), cancellationToken);
+        var result = await mediator.Send
+            (new DeleteEmployeeCommand(id), cancellationToken);
         if (!result)
         {
             return NotFound();
