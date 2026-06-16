@@ -5,3 +5,5 @@ global using Practical25.Domain.Enums;
 global using Practical25.Application.DTOs;
 global using MediatR;
 global using Practical25.Application.Features.Employees.Commands;
+global using FluentValidation;
+global using Practical25.Application.Features.Employees.Queries;

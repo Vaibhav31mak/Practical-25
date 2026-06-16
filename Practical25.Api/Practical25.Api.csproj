@@ -8,6 +8,9 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="16.1.1" />
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+    <PackageReference Include="MediatR" Version="14.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.8">
       <PrivateAssets>all</PrivateAssets>
@@ -24,8 +27,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Practical23.BAL\Practical23.BAL.csproj" />
-    <ProjectReference Include="..\Practical23.DAL\Practical23.DAL.csproj" />
+    <ProjectReference Include="..\Practical25.Application\Practical25.Application.csproj" />
+    <ProjectReference Include="..\Practical25.Infrastructure\Practical25.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

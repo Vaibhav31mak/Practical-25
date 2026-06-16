@@ -1,6 +1,3 @@
-using Practical25.Infrastructure.Context;
-using Practical25.Infrastructure.Repositories;
-
 namespace Practical25.Infrastructure.UnitOfWork
 {
     public sealed class UnitOfWork(ApplicationDbContext context) : IUnitOfWork
@@ -11,6 +8,9 @@ namespace Practical25.Infrastructure.UnitOfWork
         public IRepository<Employee> Employees => _employees ??=
             new Repository<Employee>(_context);
 
+        /// <summary>
+        /// Saves all pending changes to the database.
+        /// </summary>
         public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             return _context.SaveChangesAsync(cancellationToken);

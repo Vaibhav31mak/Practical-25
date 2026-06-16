@@ -1,11 +1,12 @@
-using Practical25.Infrastructure.Context;
-
 namespace Practical25.Infrastructure.Seeders
 {
     public sealed class DatabaseSeeder(ApplicationDbContext context) : IDatabaseSeeder
     {
         private readonly ApplicationDbContext _context = context;
 
+        /// <summary>
+        /// Seeds initial employee data when the database is empty.
+        /// </summary>
         public async Task SeedAsync(CancellationToken cancellationToken = default)
         {
             if (await _context.Employees.AnyAsync(cancellationToken))
